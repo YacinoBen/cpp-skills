@@ -16,6 +16,10 @@ Guidelines for enforcing strict type safety in modern C++, eliminating undefined
 * **Null Pointer Constant**: Always use `nullptr` instead of `NULL` or `0` to ensure strict pointer type safety.
 * **Uniform Initialization**: Initialize variables using uniform brace initialization (`{}`, list-initialization) rather than assignment (`=`) to prevent narrow conversions and eliminate the "most vexing parse".
 
+```bash
+int a {5};
+```
+
 ## Compile-Time Validation (`static_assert`)
 * **Compile-Time Constraints**: Use `static_assert` inside functions, classes, and template structures to validate invariants, type traits (via `<type_traits>`), and architectural assumptions at compile time before any code runs.
 * **Template Safety**: Combine `static_assert` with concepts or type traits to ensure templates receive valid template arguments, producing clear, readable compilation errors instead of cryptic template substitution failures (SFINAE noise).
