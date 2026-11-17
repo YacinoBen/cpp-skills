@@ -6,40 +6,60 @@ Production-grade, modular C++ reference guidelines and skills designed to feed L
 
 ## 🎯 Core Philosophy: The "Prompt-to-Code" Workflow
 
-This repository is built around a **Prompt-to-Code** workflow. The goal is simple: **you never write the C++ code yourself; you write a precise technical prompt**, and your assistant reads the modular documentation in this repository to generate clean, modern, and production-ready C++ code.
+This repository is built around a **Prompt-to-Code** workflow. The goal is simple: **you never write the C++ code yourself; you write a precise technical prompt**, and your assistant reads the modular documentation in this repository to clean, modern, and production-ready C++ code.
 
 ---
 
-## 📂 Repository Structure
+## 📂 Repository & Skills Structure
 
-- `versions/` : Language specifications and compiler support matrices (C++11, C++14, C++17, C++20, C++23, C++26, C++29, and general index).
-- `architecture/` : Patterns, design principles, and algorithms.
-- `core/` : Core language features (coroutines, lambdas, templates, safety, error handling).
-- `standards/` : Naming conventions, style guides, and ISO Core Guidelines enforcement.
-- `performance/` : Memory management, containers, concurrency, and optimization techniques.
-- `hardware/` : Low-level compute, hardware acceleration, and SIMD data-parallel types.
-- `build/` : Build system management, CMake best practices, and presets.
-- `quality/` : Testing strategies, diagnostics, static analysis, and documentation guidelines.
+To avoid downloading unnecessary repository files (like root licenses or meta files), ensure you only download or include the **`skills/`** folder inside your project. 
+
+Inside `skills/`, the entry point is **`skills.md`**:
+
+```markdown
+# C++ Development Guidelines
+You are an expert in modern C++ development with deep knowledge of C++ standards, memory management, and high-performance programming.
+
+## C++ Versions
+- **C++ modern & Legacy Standards**: See the [versions/](versions/) directory
+
+## Architecture & Design
+- **Patterns & Algorithms**: See the [architecture/](architecture/) directory
+
+## Core Development
+- **Best Practices, Templates, Safety & Errors**: See the [core/](core/) directory
+
+## Naming Conventions & Standards
+- **Naming & Code Style**: See the [standards/](standards/) directory
+
+## Performance & Memory
+- **Memory, Containers, Concurrency & Optimization**: See the [performance/](performance/) directory
+
+## Hardware Acceleration
+- **Low-level Compute & SIMD**: See the [hardware/](hardware/) directory
+
+## Build & Package Management
+- **CMake & Presets**: See the [build/](build/) directory
+
+## Quality & Diagnostics
+- **Testing, CI/CD, Diagnostics & Documentation**: See the [quality/](quality/) directory
+```
 
 ---
 
-## 🚀 How to Use It (With or Without Claude)
+## 🚀 How to Integrate the `skills/` Folder
 
-You don't *have* to use Claude. Any modern LLM or AI assistant can leverage these skills as long as your workspace points to them.
-
-### Option 1: Integrating with Claude Code (or any AI assistant)
-
-1. Clone or copy this repository into your project (e.g., inside a `skills/` folder or at your workspace root).
-2. Create or update a `CLAUDE.md` file (or your assistant's system prompt configuration) at your project root to reference these files:
+1. **Extract or Copy only the `skills/` directory** into your target C++ project workspace (e.g., at your project root or under `.claude/skills/`).
+2. Point your AI assistant or configure your workspace instructions (like a `CLAUDE.md` file at your project root) to use `skills/skills.md` as the core system prompt reference:
 
 ```markdown
 # Project Instructions
 
 You are an expert modern C++ developer (C++20/C++23). 
-Always refer to the modular documentation inside the `skills/` directory to ensure compliance with our architecture, memory safety standards, and modern syntax guidelines:
-- Versions & Features: `skills/versions/`
-- Core Mechanics (Coroutines, etc.): `skills/core/`
-- Performance & Concurrency: `skills/performance/`
+Always refer to the guidelines and documentation inside the `skills/` directory:
+- Main Entry Point: `skills/skills.md`
+- Core Features: `skills/core/`
+- Versions: `skills/versions/`
 ```
 
 ---
@@ -57,10 +77,3 @@ Instead of writing boilerplate or searching documentation, you interact with you
 * **Your Prompt:**
   > *"Implement a lock-free or low-contention thread-safe queue for high-frequency trading in C++23, utilizing memory order constraints specified in our performance guidelines."*
 * **What the Assistant Does:** It cross-references `skills/performance/` and `skills/versions/cpp-23.md` to write a robust, cache-aligned implementation using `std::atomic` and proper acquire-release semantics.
-
----
-
-## 🛠️ Requirements & Contribution
-- **Language:** English (mandatory for all skill modules).
-- **Style:** Developer-first, ISO-compliant, free of external paper noise and ISO boilerplate.
-- **CI/CD:** Optional at this stage; focus remains entirely on documentation quality and modularity.
