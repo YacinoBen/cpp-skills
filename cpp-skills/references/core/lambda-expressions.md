@@ -6,7 +6,7 @@ Guidelines and patterns for writing concise, type-safe, and zero-overhead anonym
 
 ---
 
-## 1. Basic Syntax & Anatomy
+## 1. Basic Syntax
 
 ```cpp
 [capture_clause](parameters) specifiers -> return_type {

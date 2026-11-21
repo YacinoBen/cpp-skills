@@ -14,7 +14,7 @@ Guidelines for automated code formatting, static analysis, and continuous qualit
 ## Clang-Tidy
 
 - **Static Analysis:** Run static analysis checks to detect modern C++ anti-patterns, potential bugs, and optimization opportunities using a compilation database (`compile_commands.json`).
-- **Reference Configuration:** See [`.clang-tidy`](./.clang-tidy).
+- **Reference Configuration:** See [`clang-tidy`](./clang-tidy.yml).
 
 ---
 
