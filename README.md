@@ -17,7 +17,7 @@ claude.md
 Follow all behavioral, documentation, and technical rules defined in `skills/context.md`.
 ```
 
-*(Note: `context.md` automatically routes the AI to `skills/skills.md` and the relevant domain files.)*
+*(Note: `context.md` automatically routes the AI to `skills/SKILL.md` and the relevant domain files.)*
 
 ---
 
