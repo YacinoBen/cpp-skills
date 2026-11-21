@@ -1,5 +1,4 @@
-# Error Handling & Exception Safety Reference
-
+# Error Handling & Exception Safety
 ## Overview
 
 Guidelines for robust error handling in modern C++23, balancing value-based expected return types (`std::expected`) for recoverable errors with structured exception handling and strict exception safety guarantees for exceptional conditions.

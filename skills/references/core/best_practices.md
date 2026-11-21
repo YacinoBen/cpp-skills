@@ -1,4 +1,4 @@
-# Modern C++23 & MISRA Best Practices Reference
+# Modern C++23 & MISRA Best Practices
 
 ## Overview
 

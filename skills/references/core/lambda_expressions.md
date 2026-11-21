@@ -1,4 +1,4 @@
-# Modern C++ Lambda Expressions Reference
+# Modern C++ Lambda Expressions
 
 ## Overview
 

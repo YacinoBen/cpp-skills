@@ -1,5 +1,4 @@
-# Testing and Quality Assurance Reference
-
+# Testing and Quality Assurance
 ## Overview
 
 Guidelines for writing deterministic, maintainable unit and integration tests, isolating dependencies, and enforcing regression safety across C++ codebases.

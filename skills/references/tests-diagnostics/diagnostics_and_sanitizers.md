@@ -1,4 +1,4 @@
-# Diagnostics and Sanitizers Reference
+# Diagnostics and Sanitizers
 
 ## Overview
 
