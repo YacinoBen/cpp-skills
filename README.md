@@ -5,19 +5,19 @@ Modular C++ reference guidelines designed to configure LLMs and coding assistant
 
 ## Quick Integration
 
-Only the **`skills/`** directory is required in your project workspace (the entry point is `skills/context.md`).
+Only the **`cpp-skills/`** directory is required in your project workspace (the entry point is `cpp-skills/context.md`).
 
-1. **Copy or clone only the `skills/` folder** into your C++ project root (or `.claude/skills/`).
-2. **Point your assistant's configuration file** (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or Custom Instructions) to `skills/context.md`:
+1. **Copy or clone only the `cpp-skills/` folder** into your C++ project root (or `.claude/skills/`).
+2. **Point your assistant's configuration file** (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or Custom Instructions) to `cpp-skills/context.md`:
 
 ```markdown
 claude.md
 
 # Project Instructions
-Follow all behavioral, documentation, and technical rules defined in `skills/context.md`.
+Follow all behavioral, documentation, and technical rules defined in `cpp-skills/context.md`.
 ```
 
-*(Note: `context.md` automatically routes the AI to `skills/SKILL.md` and the relevant domain files.)*
+*(Note: `context.md` automatically routes the AI to `cpp-skills/SKILL.md` and the relevant domain files.)*
 
 
 ## Usage Examples
