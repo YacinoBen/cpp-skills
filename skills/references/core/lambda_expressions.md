@@ -14,10 +14,10 @@ Guidelines and patterns for writing concise, type-safe, and zero-overhead anonym
 };
 ```
 
-* **`[capture_clause]`**: Defines which variables from the enclosing scope are accessible inside the lambda and how they are captured (by value or by reference).
-* **`(parameters)`**: Function parameter list (optional in C++23 if empty and no specifiers like `mutable` or `noexcept` are used).
-* **`specifiers`**: Optional qualifiers such as `mutable`, `constexpr`, `consteval`, `noexcept`, or `static` (C++23).
-* **`-> return_type`**: Trailing return type (optional; deduced automatically in most cases).
+- **`[capture_clause]`**: Defines which variables from the enclosing scope are accessible inside the lambda and how they are captured (by value or by reference).
+- **`(parameters)`**: Function parameter list (optional in C++23 if empty and no specifiers like `mutable` or `noexcept` are used).
+- **`specifiers`**: Optional qualifiers such as `mutable`, `constexpr`, `consteval`, `noexcept`, or `static` (C++23).
+- **`-> return_type`**: Trailing return type (optional; deduced automatically in most cases).
 
 ---
 
@@ -93,9 +93,9 @@ static_assert(square(6) == 36);
 
 ## 4. Performance & Best Practices
 
-* **Prefer `auto` or Template Parameters Over `std::function`**:
-  * Storing a lambda in `auto` or passing it to a constrained template preserves its unique closure type, enabling full compiler **inlining** and zero heap allocation.
-  * `std::function` introduces type erasure, indirect virtual-like calls, and potential dynamic heap allocation if the closure exceeds Small Buffer Optimization (SBO).
+- **Prefer `auto` or Template Parameters Over `std::function`**:
+  - Storing a lambda in `auto` or passing it to a constrained template preserves its unique closure type, enabling full compiler **inlining** and zero heap allocation.
+  - `std::function` introduces type erasure, indirect virtual-like calls, and potential dynamic heap allocation if the closure exceeds Small Buffer Optimization (SBO).
 
 ```cpp
 // Fast: Zero overhead, fully inlinable
@@ -110,6 +110,6 @@ void executeErased(const std::function<void()>& fn) {
 }
 ```
 
-* **Avoid Dangling References in Asynchronous Scopes**: Never pass a lambda capturing local variables by reference (`[&]`) to a background thread, detached task, or stored callback.
-* **Use `mutable` Sparingly**: By default, a lambda's `operator()` is `const`, meaning value-captured variables cannot be modified. Add `mutable` only when maintaining internal state across invocations is explicitly intended.
-* **Mark `noexcept` When Applicable**: Annotating non-throwing lambdas with `noexcept` allows standard containers and algorithms to select optimal move/execution paths.
+- **Avoid Dangling References in Asynchronous Scopes**: Never pass a lambda capturing local variables by reference (`[&]`) to a background thread, detached task, or stored callback.
+- **Use `mutable` Sparingly**: By default, a lambda's `operator()` is `const`, meaning value-captured variables cannot be modified. Add `mutable` only when maintaining internal state across invocations is explicitly intended.
+- **Mark `noexcept` When Applicable**: Annotating non-throwing lambdas with `noexcept` allows standard containers and algorithms to select optimal move/execution paths.
