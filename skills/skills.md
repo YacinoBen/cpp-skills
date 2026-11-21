@@ -1,26 +1,28 @@
-# C++ Development Guidelines
-You are an expert in modern C++ development with deep knowledge of C++ standards, memory management, and high-performance programming.
+# C++ Development Guidelines & Knowledge Index
 
-## C++ Versions
-- **C++ modern & Legacy Standards**: See the [versions/](versions/) directory
+Consult the relevant domain files below based on the user's request before writing or reviewing code.
+
+## C++ Standards & Versions
+- **Modern C++ (C++20/23) & Legacy Migration**: See [versions/](versions/)
 
 ## Architecture & Design
-- **Patterns & Algorithms**: See the [architecture/](architecture/) directory
+- **Design Patterns, SOLID & Algorithms**: See [architecture/](architecture/)
 
-## Core Development
-- **Best Practices, Templates, Safety & Errors**: See the [core/](core/) directory
+## Core Development & Ecosystem
+- **Best Practices, Templates, Safety & Error Handling**: See [core/](core/)
+- **Recommended Third-Party Libraries (Suggestions Only)**: See [core/libraries.md](core/libraries.md)
 
-## Naming Conventions & Standards
-- **Naming & Code Style**: See the [standards/](standards/) directory
+## Naming Conventions & Code Style
+- **Naming (`snake_case` / `PascalCase`) & Formatting**: See [standards/](standards/)
 
-## Performance & Memory
-- **Memory, Containers, Concurrency & Optimization**: See the [performance/](performance/) directory
+## Performance & Memory Management
+- **RAII, Allocators, Containers, Concurrency & Optimization**: See [performance/](performance/)
 
 ## Hardware Acceleration
-- **Low-level Compute & SIMD**: See the [hardware/](hardware/) directory
+- **Low-Level Compute, Cache Locality & SIMD**: See [hardware/](hardware/)
 
 ## Build & Package Management
-- **CMake & Presets**: See the [build/](build/) directory
+- **Modern CMake, Presets & Dependency Management**: See [build/](build/)
 
-## Quality & Diagnostics
-- **Testing, CI/CD, Diagnostics & Documentation**: See the [quality/](quality/) directory
+## Quality, Testing & Diagnostics
+- **Unit Testing (Catch2/GTest), CI/CD, Sanitizers & Profiling**: See [quality/](quality/)
