@@ -19,7 +19,6 @@ Follow all behavioral, documentation, and technical rules defined in `skills/con
 
 *(Note: `context.md` automatically routes the AI to `skills/SKILL.md` and the relevant domain files.)*
 
----
 
 ## Usage Examples
 
@@ -29,9 +28,16 @@ Follow all behavioral, documentation, and technical rules defined in `skills/con
 ### 2. Lock-Free Queue (C++23 Concurrency)
 - **Prompt:** *"Implement a low-contention thread-safe queue in C++23 with explicit memory ordering."*
 
----
 
 
-## Attribution & License
+# Test the documentation
+
+Before push, run this python file:
+
+```bash
+python scripts/check.py
+```
+
+# Attribution & License
 
 Standard feature lists and language version summaries in this section are adapted from [cppreference.com](https://en.cppreference.com/) (licensed under **CC BY-SA**). All custom guidelines, examples, configurations, and repository structure are governed by the repository's `LICENSE` file.
