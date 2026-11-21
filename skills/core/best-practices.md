@@ -38,3 +38,6 @@ A consolidated checklist of core best practices for building safe, deterministic
 * **Strong Type Safety**: Ban C-style casts in favor of `static_cast` or `std::bit_cast`, use `enum class`, and avoid implicit narrowing conversions.
 * **Predictable Control Flow**: Ensure all switch statements handle all cases explicitly (`default:` or exhaustive `enum class`), avoid `goto`, and keep cyclomatic complexity low.
 * **Compiler & Static Analysis Enforcement**: Compile with maximum warning levels treated as errors (`-Wall -Wextra -Wpedantic -Werror`) and validate compliance continuously with **Clang-Tidy** and static analyzers.
+
+## Annotations
+Use [[no_discard]] if the function need to return a value
