@@ -1,0 +1,18 @@
+{
+  "name": "yacinoben-cpp-skills",
+  "description": "Modern C++ skills by Yacine Benaffane: ISO C++ Core Guidelines, MISRA C++:2023 safety rules, Clang-Tidy configuration, and GoogleTest.",
+  "owner": {
+    "name": "Yacine Benaffane"
+  },
+  "plugins": [
+    {
+      "name": "cpp-skills",
+      "source": {
+        "source": "github",
+        "repo": "YacinoBen/cpp-skills"
+      },
+      "description": "By Yacine Benaffane. Production-grade Modern C++ guidelines (C++11/14/17/20/23): universal brace initialization, MISRA C++:2023 safety rules, Clang-Tidy enforcement, and GoogleTest.",
+      "category": "development"
+    }
+  ]
+}
