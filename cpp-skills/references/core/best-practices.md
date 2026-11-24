@@ -4,6 +4,15 @@
 
 A consolidated checklist of core best practices for building safe, deterministic, and high-performance C++23 applications, blending modern standard idioms (RAII, Concepts, Ranges, Lambdas) with safety-critical rules from **MISRA C++:2023**.
 
+## Source Files, Physical Design & ABI Boundaries
+
+- **Header vs. Source Split**: Keep headers focused on what callers need—declarations, templates, `inline` functions, and `constexpr` entities—and move non-inline definitions and implementation details into source files. Never define non-inline functions or non-`constexpr` variables in a header, and keep `using namespace` directives out of headers (prefer targeted `using` declarations when needed).
+- **Self-Contained & Minimal Includes**: Include every header you directly use rather than relying on transitive includes, while omitting unneeded headers to protect compile times and avoid unnecessary rebuilds. Order includes from most specific to most general (own header, project headers, third-party headers, standard library headers) so each header proves self-containment, and enforce standalone compilation in tests.
+- **Forward Declarations & Include Guards**: Forward-declare types when only a pointer or reference appears in a header, but include the full definition for `enum` types so underlying-type mismatches cannot alter struct sizes. Guard headers with `#pragma once` or project/path-prefixed include guards without leading underscores.
+- **Namespace Discipline**: Keep project symbols inside a dedicated project namespace rather than global scope (reserving global scope for `main`), use a `detail` namespace for language-required implementation entities, and scope OS-visible IPC names and session entities cleanly to avoid collisions. Never open `namespace std` except for permitted user-type specializations.
+- **Internal Linkage & Anonymous Namespaces**: Place `.cpp`-local helpers, constants, and types in an anonymous namespace (or use `static` on single free functions) so the compiler can inline or strip internal symbols freely without linkage leaks. Never place an unnamed namespace inside a header, as it generates distinct per-translation-unit entities; use inline namespaces intentionally for ABI versioning.
+- **One-Definition Rule (ODR) & Build Consistency**: Ensure inline functions, templates, and class definitions match identically across every translation unit. Compile all translation units of a binary with consistent language standards, preprocessor macros, sanitizer flags, and standard library configurations to prevent subtle ODR violations or linker mismatches. Note that internal-linkage entities in headers duplicate per translation unit, whereas a `static` local inside an `inline` function is shared across translation units.
+
 ## Memory Management & Value Semantics
 
 - **Strict RAII (Resource Acquisition Is Initialization)**: Bind the lifetime of every resource (memory, file descriptors, locks, sockets) to stack-allocated objects with deterministic destructors. Never use raw `new` or `delete`.
