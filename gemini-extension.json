@@ -1,5 +1,5 @@
 {
   "name": "cpp-skills",
   "version": "1.0.0",
-  "description": "Production-grade Modern C++ guidelines (C++17/20/23): universal brace initialization, MISRA C++:2023 safety rules, Clang-Tidy enforcement, and GoogleTest."
+  "description": "Production-grade Modern C++ guidelines (C++11/14/17/20/23): universal brace initialization, MISRA C++:2023 safety rules, Clang-Tidy enforcement, and GoogleTest."
 }
