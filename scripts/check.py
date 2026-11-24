@@ -63,7 +63,7 @@ for folder_name in ("skills", "cpp-skills"):
             if not kebab_re.match(p.name):
                 errors.append(f"Non-kebab-case name: {p}")
 
-# 4. Verify JSON files (syntax + plugin/marketplace/gemini-extension manifest structure)
+# 4. Verify JSON files (syntax + plugin/codex/marketplace/gemini-extension manifest structure)
 loaded_manifests: dict[str, dict] = {}
 
 for json_file in root.rglob("*.json"):
@@ -85,6 +85,17 @@ for json_file in root.rglob("*.json"):
         for field in ("name", "version", "description"):
             if not isinstance(data.get(field), str) or not data[field].strip():
                 errors.append(f"{json_file}: missing or empty '{field}'.")
+
+        if json_file.name == "plugin.json":
+            iface = data.get("interface")
+            if not isinstance(iface, dict):
+                errors.append(f"{json_file}: missing or invalid 'interface' object for Codex.")
+            else:
+                for ifield in ("displayName", "shortDescription", "longDescription", "category"):
+                    if not isinstance(iface.get(ifield), str) or not iface[ifield].strip():
+                        errors.append(f"{json_file}: interface missing or empty '{ifield}'.")
+                if not isinstance(iface.get("capabilities"), list) or not iface["capabilities"]:
+                    errors.append(f"{json_file}: interface 'capabilities' must be a non-empty list.")
     elif json_file.name == "marketplace.json":
         for field in ("name", "owner", "plugins"):
             if field not in data:
