@@ -1,30 +1,29 @@
 # C++ Skills Repository (`cpp-skills`)
 
-Modular C++ reference guidelines designed to configure LLMs and coding assistants (Claude Code, Cursor, Copilot, etc.) to generate clean, ISO-compliant, and documented modern C++ code.
+Modular modern C++ (C++11–C++23) reference guidelines and coding standards for AI coding assistants (Claude Code, Codex, Gemini CLI, Cursor, and Copilot). Designed for deterministic memory management, zero-cost abstractions, MISRA C++:2023 alignment, and consistent API documentation.
 
-# Project Instructions
-Follow all behavioral, documentation, and technical rules defined in `cpp-skills/context.md`.
+## Repository Structure
 
+- `SKILL.md`: Primary entry point containing behavioral rules, documentation standards, and domain routing to `references/`.
+- `references/`: Modular reference sheets organized by domain (`versions/`, `architecture/`, `core/`, `standards/`, `performance/`, `hardware/`, `build/`, and `quality/`).
+- `scripts/check.py`: Validation script checking repository structure, links, and reference consistency.
 
-*(Note: `context.md` automatically routes the AI to `cpp-skills/SKILL.md` and the relevant domain files.)*
+## Installation
 
-# Installation
-## Quick Integration
+Only the `cpp-skills/` directory is needed in a target repository or agent skill path.
 
-Only the **`cpp-skills/`** directory is required in your project workspace (the entry point is `cpp-skills/context.md`).
+### 1. Copy or Clone into Your Workspace
+Place `cpp-skills/` in your project root or under your assistant's skills directory (for example, `.claude/skills/cpp-skills`).
 
-1. **Copy or clone only the `cpp-skills/` folder** into your C++ project root (or `.claude/skills/`).
-2. **Point your assistant's configuration file** (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or Custom Instructions) to `cpp-skills/context.md`:
+### 2. Wire Your Assistant Configuration
+Point `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or system instructions to `SKILL.md`:
 
 ```markdown
-claude.md
+Read and apply `cpp-skills/SKILL.md` and the relevant files in `cpp-skills/references/` before writing, refactoring, or reviewing C++ code.
 ```
 
-## Claude Code & Agent Installation
-
-### Claude Code Plugin / Marketplace
-
-Add the repository as a marketplace and install the plugin directly inside Claude Code:
+### 3. Claude Code Marketplace
+Add the repository and install the plugin directly from Claude Code:
 
 ```bash
 /plugin marketplace add YacinoBen/cpp-skills
@@ -33,21 +32,18 @@ Add the repository as a marketplace and install the plugin directly inside Claud
 
 ## Usage Examples
 
-### 1. Asynchronous Server (C++20 Coroutines)
-- **Prompt:** *"Write a C++20 coroutine-based TCP echo server that reads from a socket and echoes data back asynchronously."*
+- **Async Networking (C++20):** *"Write a C++20 coroutine-based TCP echo server that reads from a socket and echoes data back asynchronously."*
+- **Lock-Free Data Structures (C++23):** *"Implement a low-contention thread-safe queue in C++23 with explicit memory ordering and RAII ownership."*
+- **Compile-Time & Range Pipelines (C++23):** *"Filter, transform, and materialize sensor samples with `std::views` and `std::ranges::to` without intermediate heap allocations."*
 
-### 2. Lock-Free Queue (C++23 Concurrency)
-- **Prompt:** *"Implement a low-contention thread-safe queue in C++23 with explicit memory ordering."*
-- 
+## Validation
 
-# Test the documentation
-
-Before push, run this python file:
+Run the verification script before committing or pushing changes:
 
 ```bash
 python scripts/check.py
 ```
 
-# Attribution & License
+## Attribution & License
 
-Standard feature lists and language version summaries in this section are adapted from [cppreference.com](https://en.cppreference.com/) (licensed under **CC BY-SA**). All custom guidelines, examples, configurations, and repository structure are governed by the repository's `LICENSE` file.
+Language feature lists and standard summaries are adapted from [cppreference.com](https://en.cppreference.com/) under **CC BY-SA**. Repository structure, reference guides, scripts, and examples follow the terms in `LICENSE`.
