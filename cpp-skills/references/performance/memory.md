@@ -1,22 +1,29 @@
 # Memory Management Reference
 
 ## Overview
-Guidelines for safe, modern C++ memory management, emphasizing strict ownership models, RAII principles, and heap avoidance to ensure leak-free and exception-safe software.
+Guidelines for safe, modern C++ memory management, emphasizing strict ownership models, RAII principles, lifetime safety, and heap avoidance to ensure leak-free, deterministic, and exception-safe software.
 
-## Smart Pointers
-- **Exclusive Ownership**: Use `std::unique_ptr` as the default choice for managing dynamically allocated resources with single-owner semantics.
-- **Shared Ownership**: Use `std::shared_ptr` strictly when shared, multi-owner lifetime management is explicitly required.
-- **Circular Reference Prevention**: Use `std::weak_ptr` alongside `std::shared_ptr` to break ownership cycles and prevent memory leaks.
-- **Owning Pointers**: Avoid raw owning pointers (`T*` that require manual `delete`); reserve raw pointers purely for non-owning observers or legacy interop.
+## Smart Pointers & Ownership Semantics
+- **Exclusive Ownership (`std::unique_ptr`)**: Use `std::unique_ptr` as the default owner for dynamically allocated resources with single-owner semantics—zero runtime overhead over a raw pointer, movable by default, and able to carry stateless custom deleters for C `free`/`close`/`destroy` handles. A `unique_ptr` member automatically makes a class move-only; for the Pimpl idiom, declare the destructor in the header and define it in the source file where the pointee type is complete.
+- **Shared Ownership (`std::shared_ptr`, `std::make_shared` & `std::make_shared_for_overwrite`)**: Use `std::shared_ptr` strictly when ownership is genuinely shared and lifetime is not statically determinable. Note the overhead: a control block allocation, two atomic reference counters, and potential code bloat from per-type deleter/destroyer instantiations.
+  - Prefer `std::make_shared` (and `std::make_shared_for_overwrite` in C++20 when default/uninitialized storage is intentional) for single-allocation efficiency and exception safety. In C++20+, `make_shared` / `make_shared_for_overwrite` also support bounded and unbounded arrays (`T[N]`, `T[]`, including fill values), with reverse-order destruction on scope exit or element construction failure (`constexpr` support arrives in C++26).
+  - Be mindful of trade-offs: `make_shared` keeps the object's memory alive as long as any `std::weak_ptr` shares its control block, requires public constructor access, does not accept a custom deleter, and uses global `::new` rather than class-specific `operator new`. For large objects with long-lived `weak_ptr` observers, or when a custom deleter is required, prefer explicit `std::shared_ptr` construction with `new` or a deleter.
+  - In async chains, capture a `shared_ptr` (or hand out `shared_from_this()`), passing by value only when transferring lifetime responsibility.
+- **Circular Reference Prevention (`std::weak_ptr`)**: Use `std::weak_ptr` alongside `std::shared_ptr` to break ownership cycles and model non-owning references to objects that may expire.
+- **Owning vs. Non-Owning Pointers**: Avoid raw owning pointers (`T*` requiring manual `delete`); reserve raw pointers strictly for non-owning observers or low-level interoperability.
+- **Value Members First**: Prefer direct value members and containers of values over pointers unless polymorphism, stable addresses, or shared/deferred lifetime is truly needed.
 
-## RAII (Resource Acquisition Is Initialization)
-- **Universal Resource Management**: Bind the lifecycle of resources (memory, file descriptors, mutexes, sockets) directly to object scopes using RAII.
-- **Custom Destructors**: Wrap complex resources in custom classes featuring robust destructors that clean up automatically upon scope exit.
-- **Exception Safety**: Rely on RAII unwinding to guarantee that resources are safely released even when exceptions are thrown mid-execution.
-- **Scope Guards**: Utilize scope guards or custom defer mechanisms to execute lightweight cleanup logic without writing redundant boilerplate.
+## RAII, Scoped State & C API Interop
+- **Universal Resource Management**: Bind every resource—memory, files, sockets, locks, handles, GPU buffers, or transactions—to an object whose destructor releases it, as destructors remain the single reliable cleanup path across early returns, loop exits, and exceptions.
+- **Invariants & Cleanup Discipline**: Establish class invariants in the constructor (throwing on failure or returning `std::optional` / `std::expected` from a factory). Wrap raw acquire/release pairs once in a dedicated handle type rather than repeating manual pairs or writing cleanup inside `catch` blocks.
+- **Scoped Locks & State Guards**: Always use RAII guards (`std::lock_guard`, `std::unique_lock`, `std::shared_lock`, `std::scoped_lock`) rather than manual `lock()`/`unlock()` calls, and apply the same scoped-guard pattern to reversible state such as stream flags, signal masks, working directories, or graphics contexts. Always name guard variables so temporary objects are not destroyed immediately at the end of a full expression.
+- **Interoperating with C APIs**: Encapsulate C resources in a `std::unique_ptr` with a stateless deleter (guarding pointee completeness with `static_assert(sizeof(T) > 0)` inside the deleter) or in a custom RAII type when teardown requires multiple steps. Convert at system boundaries rather than passing raw handles through application logic, and use `std::out_ptr` or `std::inout_ptr` (C++23) when C APIs populate pointers through `T**` output parameters.
 
-## Best Practices & Heap Avoidance
-- **Stack Allocation**: Prefer stack allocation over heap allocation whenever object sizes are known and lifetimes match local scopes to maximize performance and cache locality.
-- **Safe Creation**: Use `std::make_unique` and `std::make_shared` for exception-safe, efficient pointer construction without explicit `new` calls.
-- **Raw Allocation Ban**: Strictly avoid `new` and `delete` in application code; delegate all dynamic allocations to standard containers or smart pointers.
-- **Container Usage**: Use standard containers instead of raw arrays or manual dynamic buffers to eliminate manual memory management overhead.
+## Non-Owning Views & Special Member Functions
+- **Non-Owning Views**: Raw pointers, references, iterators, `std::string_view`, `std::span`, and `std::mdspan` never own resources. Use them mainly as parameters and local variables—rarely as class members—and never return views bound to temporaries or allow them to outlive referent objects or container reallocations. Pass views instead of `const&` when avoiding a conversion is beneficial, but take `std::string` by value when the callee stores an owned copy anyway.
+- **Rule of Zero & Rule of Five**: Aim for the **Rule of Zero** in almost every class by letting RAII members manage resources and relying on compiler-generated special member functions. When custom cleanup or copy/move semantics are required (**Rule of Five**), explicitly define or `= delete` all five special members—remembering that a user-declared destructor suppresses implicit move operations and silently turns moves into copies.
+- **Defaults, Deletion, Polymorphism & Move Guarantees**: Keep `= default` inside the class body to preserve triviality, use `= delete` to explicitly forbid disallowed operations with clear diagnostics, and protect or delete copy/move operations on polymorphic base classes to prevent slicing. Mark move operations `noexcept`, leave moved-from objects in a valid but unspecified state safe against self-move, and implement copy assignment cleanly via copy-and-swap or self-assignment-safe direct assignment.
+
+## Best Practices, Containers & Heap Avoidance
+- **Stack Allocation & Heap Avoidance**: Prefer stack allocation when sizes are bounded and lifetimes match local scopes, and avoid `new` and `delete` in application code in favor of `std::make_unique`, `std::make_shared`, or standard containers.
+- **Containers as Owners**: Default to `std::vector` for contiguous sequences, calling `reserve()` before known growth and `shrink_to_fit()` only when peak capacity far exceeds steady-state needs. Use fixed-capacity stack structures when small, bounded element counts should avoid the heap entirely; use `emplace_back` for in-place construction and `push_back` for existing objects (avoiding `emplace` surprises with `explicit` constructors). Hold polymorphic collections via smart pointers (such as `std::unique_ptr`), and never store raw references in containers—use values, pointers, or `std::reference_wrapper`.
