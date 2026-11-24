@@ -63,7 +63,9 @@ for folder_name in ("skills", "cpp-skills"):
             if not kebab_re.match(p.name):
                 errors.append(f"Non-kebab-case name: {p}")
 
-# 4. Verify JSON files (syntax + plugin/marketplace manifest structure)
+# 4. Verify JSON files (syntax + plugin/marketplace/gemini-extension manifest structure)
+loaded_manifests: dict[str, dict] = {}
+
 for json_file in root.rglob("*.json"):
     if ".git" in json_file.parts:
         continue
@@ -73,7 +75,13 @@ for json_file in root.rglob("*.json"):
         errors.append(f"{json_file}: invalid JSON -> {exc}")
         continue
 
-    if json_file.name == "plugin.json":
+    if not isinstance(data, dict):
+        errors.append(f"{json_file}: top-level JSON must be an object.")
+        continue
+
+    loaded_manifests[json_file.name] = data
+
+    if json_file.name in ("plugin.json", "gemini-extension.json"):
         for field in ("name", "version", "description"):
             if not isinstance(data.get(field), str) or not data[field].strip():
                 errors.append(f"{json_file}: missing or empty '{field}'.")
@@ -83,6 +91,17 @@ for json_file in root.rglob("*.json"):
                 errors.append(f"{json_file}: missing '{field}'.")
         if not isinstance(data.get("plugins"), list) or not data["plugins"]:
             errors.append(f"{json_file}: 'plugins' must be a non-empty list.")
+
+if "gemini-extension.json" not in loaded_manifests:
+    errors.append("Missing gemini-extension.json.")
+
+if "plugin.json" in loaded_manifests and "gemini-extension.json" in loaded_manifests:
+    plugin_ver = loaded_manifests["plugin.json"].get("version")
+    gemini_ver = loaded_manifests["gemini-extension.json"].get("version")
+    if plugin_ver and gemini_ver and plugin_ver != gemini_ver:
+        errors.append(
+            f"Version mismatch between plugin.json ({plugin_ver}) and gemini-extension.json ({gemini_ver})."
+        )
 
 if errors:
     print("\n".join(f"[ERROR] {e}" for e in errors))
