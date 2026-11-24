@@ -2,7 +2,13 @@
 
 Modular C++ reference guidelines designed to configure LLMs and coding assistants (Claude Code, Cursor, Copilot, etc.) to generate clean, ISO-compliant, and documented modern C++ code.
 
+# Project Instructions
+Follow all behavioral, documentation, and technical rules defined in `cpp-skills/context.md`.
 
+
+*(Note: `context.md` automatically routes the AI to `cpp-skills/SKILL.md` and the relevant domain files.)*
+
+# Installation
 ## Quick Integration
 
 Only the **`cpp-skills/`** directory is required in your project workspace (the entry point is `cpp-skills/context.md`).
@@ -12,13 +18,18 @@ Only the **`cpp-skills/`** directory is required in your project workspace (the 
 
 ```markdown
 claude.md
-
-# Project Instructions
-Follow all behavioral, documentation, and technical rules defined in `cpp-skills/context.md`.
 ```
 
-*(Note: `context.md` automatically routes the AI to `cpp-skills/SKILL.md` and the relevant domain files.)*
+## Claude Code & Agent Installation
 
+### Claude Code Plugin / Marketplace
+
+Add the repository as a marketplace and install the plugin directly inside Claude Code:
+
+```bash
+/plugin marketplace add YacinoBen/cpp-skills
+/plugin install cpp-skills@yacinoben-cpp-skills
+```
 
 ## Usage Examples
 
@@ -27,8 +38,7 @@ Follow all behavioral, documentation, and technical rules defined in `cpp-skills
 
 ### 2. Lock-Free Queue (C++23 Concurrency)
 - **Prompt:** *"Implement a low-contention thread-safe queue in C++23 with explicit memory ordering."*
-
-
+- 
 
 # Test the documentation
 

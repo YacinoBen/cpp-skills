@@ -1,3 +1,4 @@
+import json
 import pathlib
 import re
 import sys
@@ -61,6 +62,27 @@ for folder_name in ("skills", "cpp-skills"):
                 continue
             if not kebab_re.match(p.name):
                 errors.append(f"Non-kebab-case name: {p}")
+
+# 4. Verify JSON files (syntax + plugin/marketplace manifest structure)
+for json_file in root.rglob("*.json"):
+    if ".git" in json_file.parts:
+        continue
+    try:
+        data = json.loads(json_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        errors.append(f"{json_file}: invalid JSON -> {exc}")
+        continue
+
+    if json_file.name == "plugin.json":
+        for field in ("name", "version", "description"):
+            if not isinstance(data.get(field), str) or not data[field].strip():
+                errors.append(f"{json_file}: missing or empty '{field}'.")
+    elif json_file.name == "marketplace.json":
+        for field in ("name", "owner", "plugins"):
+            if field not in data:
+                errors.append(f"{json_file}: missing '{field}'.")
+        if not isinstance(data.get("plugins"), list) or not data["plugins"]:
+            errors.append(f"{json_file}: 'plugins' must be a non-empty list.")
 
 if errors:
     print("\n".join(f"[ERROR] {e}" for e in errors))
