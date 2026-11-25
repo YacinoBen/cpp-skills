@@ -24,6 +24,7 @@
     "displayName": "CPP Skills",
     "shortDescription": "Modern C++ guidelines (C++11/14/17/20/23), MISRA, Clang-Tidy & GoogleTest",
     "longDescription": "Enforces ISO C++ Core Guidelines, MISRA C++:2023 safety rules, Clang-Tidy checks, and GoogleTest practices across modern C++ codebases.",
+    "developerName": "Yacine Benaffane",
     "category": "Developer Tools",
     "capabilities": ["Instructions"]
   }
