@@ -30,6 +30,7 @@ Checks: >-
   -modernize-use-trailing-return-type,
   -readability-identifier-length,
   -readability-magic-numbers,
+  -readability-uppercase-literal-suffix,
 
   -cppcoreguidelines-avoid-non-const-global-variables,
   -cppcoreguidelines-avoid-const-or-ref-data-members,
@@ -182,8 +183,8 @@ CheckOptions:
   - key: readability-identifier-naming.GlobalVariableCase
     value: lower_case
 
-  # Constants: k_Max_Image_Size (k_ prefix + Camel_Snake_Case).
+  # Constants: kMaxImageSize (k prefix + CamelCase).
   - key: readability-identifier-naming.ConstexprVariablePrefix
-    value: 'k_'
+    value: 'k'
   - key: readability-identifier-naming.ConstexprVariableCase
-    value: Camel_Snake_Case
+    value: CamelCase
