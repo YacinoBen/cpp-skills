@@ -15,13 +15,13 @@ IndentWrappedFunctionNames: false
 NamespaceIndentation: None
 FixNamespaceComments: true
 
-# Longueur de ligne
+# Line length
 ColumnLimit: 120
 
-# Accolades
-BreakBeforeBraces: Attach
+# Braces
+BreakBeforeBraces: Allman
 
-# Fonctions et blocs courts
+# Short functions and blocks
 AllowShortFunctionsOnASingleLine: Inline
 AllowShortBlocksOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: WithoutElse
@@ -29,7 +29,7 @@ AllowShortLoopsOnASingleLine: false
 AllowShortLambdasOnASingleLine: All
 AllowShortCaseLabelsOnASingleLine: false
 
-# Paramètres, arguments, initialiseurs
+# Parameters, arguments, and initializers
 BinPackParameters: true
 BinPackArguments: true
 AllowAllParametersOfDeclarationOnNextLine: true
@@ -38,16 +38,16 @@ PackConstructorInitializers: NextLine
 BreakTemplateDeclarations: Yes
 BreakAfterReturnType: None
 
-# Opérateurs
+# Operators
 BreakBeforeBinaryOperators: None
 BreakBeforeTernaryOperators: true
 
-# Pointeurs / références
+# Pointers / references
 PointerAlignment: Left
 ReferenceAlignment: Pointer
 DerivePointerAlignment: false
 
-# Espaces
+# Spacing
 SpaceAfterCStyleCast: false
 SpaceAfterTemplateKeyword: true
 SpaceBeforeAssignmentOperators: true
@@ -56,18 +56,18 @@ SpacesBeforeTrailingComments: 2
 SpacesInAngles: Never
 SpacesInParens: Never
 
-# Commentaires
+# Comments
 AlignTrailingComments:
   Kind: Always
   OverEmptyLines: 0
 ReflowComments: true
 AlignEscapedNewlines: Left
 
-# Includes (Qt : l'ordre peut compter, on ne réordonne pas)
+# Includes (Qt: order may matter, do not reorder)
 SortIncludes: Never
 IncludeBlocks: Preserve
 
-# Fichiers
+# Files
 LineEnding: LF
 InsertNewlineAtEOF: true
 MaxEmptyLinesToKeep: 1

@@ -123,6 +123,11 @@ CheckOptions:
   - key: modernize-loop-convert.MinConfidence
     value: 'reasonable'
 
+  - key: cppcoreguidelines-pro-type-member-init.UseAssignment
+    value: 'false'
+  - key: modernize-use-default-member-init.UseAssignment
+    value: 'false'
+
   # =============================================================================
   # Naming conventions.
   # =============================================================================
