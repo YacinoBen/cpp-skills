@@ -1,166 +1,81 @@
 # C++ Complete Reference Index
 
-## Language
+## Core Language
 
-* Preprocessor & Comments
-* ASCII chart
+### Lexical & General Rules
+- Preprocessor & comments
+- ASCII chart
+- Keywords & name lookup
+- Fundamental types
+- The `main` function
+- Freestanding implementations
 
-### Basic concepts
-* Keywords
-* Names (lookup)
-* Types (fundamental types)
-* The main function
-* Modules (C++20)
-* Contracts (C++26)
+### Expressions & Control Flow
+- Value categories & evaluation order
+- Operators & precedence
+- Conversions & literals
+- Constant expressions
+- Declarations & initialization
+- Statements (`if`, `switch`, `for`, range-based `for` [C++11], `while`, `do-while`)
 
-### Expressions
-* Value categories
-* Evaluation order
-* Operators (precedence)
-* Conversions & Literals
-* Constant expressions
-
-### Statements
-* `if` & `switch`
-* `for` & range-for (C++11)
-* `while` & `do-while`
-
-### Declarations & Initialization
-### Functions & Overloading
-### Coroutines (C++20)
-### Classes (unions)
-### Templates & Exceptions
-### Freestanding implementations
+### Functions, Classes, Templates & Modern Language Features
+- Functions & overloading
+- Classes & unions
+- Templates & exceptions
+- Coroutines (C++20)
+- Modules (C++20)
+- Contracts (C++26)
 
 ---
 
 ## Standard Library
 
-* Standard library (headers)
-* Named requirements
+### Language Support & Diagnostics
+- Standard library headers & named requirements
+- Feature-test macros (C++20: language, library, headers)
+- Type support (`type_info`, `numeric_limits`, `exception`), `initializer_list` (C++11), variadic functions & `source_location` (C++20)
+- Comparison utilities (C++20) & concepts library (C++20)
+- Coroutine support (C++20), contract support (C++26) & execution support library (C++26)
+- Program utilities (signals, non-local jumps) & basic memory management
+- Diagnostics: assertions, error numbers, `<system_error>` (C++11), `basic_stacktrace` (C++23) & debugging support (C++26)
 
-### Language support library
-* Program utilities (Signals, Non-local jumps)
-* Basic memory management
-* Variadic functions
-* `source_location` (C++20)
-* Comparison utilities (C++20)
-* Type support (`type_info`, `numeric_limits`, `exception`)
-* `initializer_list` (C++11)
-* Coroutine support (C++20)
-* Contract support (C++26)
-* Concepts library (C++20)
+### Memory, Metaprogramming & General Utilities
+- Memory management: allocators, smart pointers & memory resources (`<memory_resource>`, C++17)
+- Metaprogramming (C++11): type traits, `<ratio>`, `integer_sequence` (C++14) & reflection (C++26)
+- General utilities: function objects, hashing & swap/type operations (C++11)
+- Integer comparison utilities (C++20), `bitset` & bit manipulation (`<bit>`, C++20)
+- Vocabulary & tuple types: `pair` & `tuple` (C++11), `optional` (C++17), `variant` & `any` (C++17), `expected` (C++23)
 
-### Diagnostics library
-* Assertions & System error (C++11)
-* Exception types & Error numbers
-* `basic_stacktrace` (C++23)
-* Debugging support (C++26)
+### Containers, Iterators, Ranges & Algorithms
+- Sequence containers: `vector`, `deque`, `array` (C++11), `list`, `forward_list` (C++11) & `inplace_vector` (C++26)
+- Associative & unordered containers: `map`, `multimap`, `set`, `multiset` & `unordered_map` / `unordered_multimap` / `unordered_set` / `unordered_multiset` (C++11)
+- Specialized containers & views: `hive` (C++26), container adaptors, `span` (C++20) & `mdspan` (C++23)
+- Iterators library
+- Ranges library (C++20): range factories, range adaptors & `generator` (C++23)
+- Algorithms library: numeric algorithms, execution policies (C++17) & constrained algorithms (C++20)
 
-### Memory management library
-* Allocators & Smart pointers
-* Memory resources (C++17)
+### Strings & Text Processing
+- Strings: `basic_string`, `char_traits` & `basic_string_view` (C++17)
+- Primitive numeric conversions (`<charconv>`, C++17), formatting (`<format>`, C++20), localization & `text_encoding` (C++26)
+- Regular expressions (C++11): `basic_regex`, algorithms & default grammar
+- Null-terminated sequence utilities (byte, multibyte, wide)
 
-### Metaprogramming library (C++11)
-* Type traits & ratio
-* `integer_sequence` (C++14)
-* Reflection (C++26)
+### Numerics, Date/Time & Input/Output
+- Numerics: common math functions, special functions (C++17), mathematical constants (C++20) & basic linear algebra algorithms (C++26)
+- Data-parallel types / SIMD (C++26), pseudo-random number generation, floating-point environment (C++11), `complex` & `valarray`
+- Date and time (`<chrono>`): calendar (C++20) & time zones (C++20)
+- Input/output: `<print>` functions (C++23), stream-based I/O, manipulators, `basic_istream` / `basic_ostream`, synchronized output (C++20) & filesystem (C++17)
 
-### General utilities library
-* Function objects & hash (C++11)
-* Swap & Type operations (C++11)
-* Integer comparison (C++20)
-* `pair` & `tuple` (C++11)
-* `optional` (C++17)
-* `expected` (C++23)
-* `variant` (C++17) & `any` (C++17)
-* `bitset` & Bit manipulation (C++20)
-
-### Containers library
-* `vector`, `deque`, `array` (C++11)
-* `list`, `forward_list` (C++11)
-* `inplace_vector` (C++26)
-* `hive` (C++26)
-* `map`, `multimap`, `set`, `multiset`
-* `unordered_map` (C++11)
-* `unordered_multimap` (C++11)
-* `unordered_set` (C++11)
-* `unordered_multiset` (C++11)
-* Container adaptors
-* `span` (C++20) & `mdspan` (C++23)
-
-### Iterators library
-### Ranges library (C++20)
-* Range factories & Range adaptors
-* `generator` (C++23)
-
-### Algorithms library
-* Numeric algorithms
-* Execution policies (C++17)
-* Constrained algorithms (C++20)
-
-### Strings library
-* `basic_string` & `char_traits`
-* `basic_string_view` (C++17)
-
-### Text processing library
-* Primitive numeric conversions (C++17)
-* Formatting (C++20) & Localization
-* `text_encoding` (C++26)
-* Regular expressions (C++11)
-  * `basic_regex` & Algorithms
-  * Default regular expression grammar
-* Null-terminated sequence utilities (byte, multibyte, wide)
-
-### Numerics library
-* Common math functions
-* Mathematical special functions (C++17)
-* Mathematical constants (C++20)
-* Basic linear algebra algorithms (C++26)
-* Data-parallel types (SIMD) (C++26)
-* Pseudo-random number generation
-* Floating-point environment (C++11)
-* `complex` & `valarray`
-
-### Date and time library
-* Calendar (C++20) & Time zone (C++20)
-
-### Input/output library
-* Print functions (C++23)
-* Stream-based I/O & I/O manipulators
-* `basic_istream` & `basic_ostream`
-* Synchronized output (C++20)
-* File systems (C++17)
-
-### Concurrency support library (C++11)
-* `thread` & `jthread` (C++20)
-* `atomic` & `atomic_flag`
-* `atomic_ref` (C++20) & `memory_order`
-* Mutual exclusion & Condition variables
-* Futures & Semaphores (C++20)
-* `latch` (C++20) & `barrier` (C++20)
-* Safe Reclamation (C++26)
-
-### Execution support library (C++26)
-### Feature test macros (C++20)
-* Language, Standard library, Headers
+### Concurrency Support (C++11)
+- Threads & cancellation: `thread` & `jthread` (C++20)
+- Atomics & memory model: `atomic`, `atomic_flag`, `atomic_ref` (C++20), `memory_order` & safe reclamation (C++26)
+- Synchronization & coordination: mutexes, condition variables, futures, semaphores (C++20), `latch` (C++20) & `barrier` (C++20)
 
 ---
 
-## Technical Specifications
-
-### Standard library extensions (Library Fundamentals TS)
-* `resource_adaptor` & `invocation_type`
-
-### Standard library extensions v2 (Library Fundamentals TS v2)
-* `propagate_const`, `ostream_joiner`, `randint`
-* `observer_ptr` & Detection idiom
-
-### Standard library extensions v3 (Library Fundamentals TS v3)
-* `scope_exit`, `scope_fail`, `scope_success`, `unique_resource`
-
-### Parallelism library extensions v2 (Parallelism TS v2)
-* `simd`
-
-### Concurrency library extensions (Concurrency TS)
-### Transactional Memory (TM TS)
+## Technical Specifications (TS)
+- **Library Fundamentals TS:** `resource_adaptor` & `invocation_type`
+- **Library Fundamentals TS v2:** `propagate_const`, `ostream_joiner`, `randint`, `observer_ptr` & detection idiom
+- **Library Fundamentals TS v3:** `scope_exit`, `scope_fail`, `scope_success` & `unique_resource`
+- **Parallelism TS v2:** `simd`
+- **Concurrency TS** & **Transactional Memory TS**
