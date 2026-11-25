@@ -43,7 +43,7 @@ A consolidated checklist of core best practices for building safe, deterministic
 
 ## MISRA C++:2023 Safety-Critical Guidelines
 
-- **Eliminate Undefined & Unspecified Behavior**: Enforce universal brace initialization (`{}`) across all entities—variables, member initializers, return values, and smart pointers (e.g., `auto ptr { std::make_unique<int>(42) };` rather than `=`), banning legacy copy-initialization (`=`) and uninitialized declarations. Prevent signed integer overflow and eliminate dangling pointers or references.
+- **Eliminate Undefined & Unspecified Behavior**: Enforce universal brace initialization (`{}`) across all entities—variables, constructor member initializer lists (e.g., `: m_data{size}` rather than `: m_data(size)`), return values, and smart pointers (e.g., `auto ptr{std::make_unique<int>(42)};` rather than `=` or `(...)`), banning legacy copy-initialization (`=`) and uninitialized declarations. Prevent signed integer overflow and eliminate dangling pointers or references.
 - **Strong Type Safety**: Ban C-style casts in favor of `static_cast` or `std::bit_cast`, use `enum class`, and avoid implicit narrowing conversions.
 - **Predictable Control Flow**: Ensure all switch statements handle all cases explicitly (`default:` or exhaustive `enum class`), avoid `goto`, and keep cyclomatic complexity low.
 - **Compiler & Static Analysis Enforcement**: Compile with maximum warning levels treated as errors (`-Wall -Wextra -Wpedantic -Werror`) and validate compliance continuously with **Clang-Tidy** and static analyzers.
