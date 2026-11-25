@@ -20,6 +20,7 @@ Consult this index and the relevant files in `references/` before writing, refac
 | Task / Topic Trigger | Reference Module |
 |---|---|
 | C++23 features, standard-level selection & migration | [references/versions/cpp23.md](references/versions/cpp23.md), [references/versions/migration.md](references/versions/migration.md) |
+| Type design, inheritance, virtual functions, layout, comparison, hashing & polymorphism | [references/architecture/classes-and-design.md](references/architecture/classes-and-design.md) |
 | Design patterns, SOLID principles & structural idioms | [references/architecture/patterns.md](references/architecture/patterns.md), [references/architecture/solid.md](references/architecture/solid.md) |
 | General best practices & MISRA C++:2023 safety rules | [references/core/best-practice.md](references/core/best-practice.md) |
 | Containers, bounds/lifetime safety & memory rules | [references/core/containers.md](references/core/containers.md) |
