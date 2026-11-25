@@ -10,7 +10,7 @@ Modular modern C++ (C++11 to C++23) reference guidelines and coding standards fo
 
 ## Installation
 
-See `./INSTALL.md` for manual copy instructions (`cpp-skills/` only), Claude Code, Codex, Gemini CLI setup, and repository validation steps.
+See [./INSTALL.md](./INSTALL.md) for manual copy instructions (`cpp-skills/` only), Claude Code, Codex, Gemini CLI setup, and repository validation steps.
 
 ## Usage Examples
 
