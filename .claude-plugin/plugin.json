@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/YacinoBen/cpp-skills.git"
   },
-  "skills": "./cpp-skills",
+  "skills": "../cpp-skills",
   "keywords": [
     "cpp",
     "c++",

@@ -21,29 +21,26 @@ Consult this index and the relevant files in `references/` before writing, refac
 
 | Task / Topic Trigger | Reference Module |
 |---|---|
-| General C++ baseline, C++23 features, standard-level selection & migration | [references/versions/cpp-general.md](references/versions/cpp-general.md), [references/versions/cpp23.md](references/versions/cpp23.md), [references/versions/migration.md](references/versions/migration.md) |
+| General C++ baseline, standard versions (C++11–C++23) & legacy/C interop | [references/versions/cpp-general.md](references/versions/cpp-general.md), [references/versions/cpp-11.md](references/versions/cpp-11.md), [references/versions/cpp-14.md](references/versions/cpp-14.md), [references/versions/cpp-17.md](references/versions/cpp-17.md), [references/versions/cpp-20.md](references/versions/cpp-20.md), [references/versions/cpp-23.md](references/versions/cpp-23.md) |
 | Legacy C/C++ interop & modernization (only when requested or legacy code detected/approved) | [references/versions/cpp-legacy.md](references/versions/cpp-legacy.md) |
 | Type design, inheritance, virtual functions, layout, comparison, hashing & polymorphism | [references/architecture/classes-and-design.md](references/architecture/classes-and-design.md) |
-| Design patterns, SOLID principles & structural idioms | [references/architecture/patterns.md](references/architecture/patterns.md), [references/architecture/solid.md](references/architecture/solid.md) |
-| General best practices & MISRA C++:2023 safety rules | [references/core/best-practice.md](references/core/best-practice.md) |
+| Design patterns & structural idioms | [references/architecture/patterns.md](references/architecture/patterns.md) |
+| General best practices & MISRA C++:2023 safety rules | [references/core/best-practices.md](references/core/best-practices.md), [references/core/safety.md](references/core/safety.md) |
 | Function signatures, parameters, returns, overloads, ADL, operators, lambdas & API design | [references/core/functions-and-interfaces.md](references/core/functions-and-interfaces.md) |
-| Containers, bounds/lifetime safety & memory rules | [references/core/containers.md](references/core/containers.md) |
 | Standard algorithms, ranges & execution policies | [references/core/algorithms.md](references/core/algorithms.md) |
-| Deferred evaluation, views, proxy objects & generators/coroutines | [references/core/deferred-computation.md](references/core/deferred-computation.md) |
+| Deferred evaluation, views, proxy objects & generators/coroutines | [references/core/deferred-computation.md](references/core/deferred-computation.md), [references/core/coroutines.md](references/core/coroutines.md) |
 | Templates, concepts & compile-time metaprogramming | [references/core/templates.md](references/core/templates.md) |
 | Standard library utilities (`span`, `optional`, `expected`, etc.) | [references/core/utilities.md](references/core/utilities.md) |
-| Streams, formatting & I/O handling | [references/core/stream.md](references/core/stream.md) |
-| Public API docs, comments & documentation standards | [references/core/documentation.md](references/core/documentation.md) |
+| Streams, formatting & I/O handling | [references/core/streams.md](references/core/streams.md) |
 | Error strategies, exceptions, status types & contracts | [references/core/error-handling.md](references/core/error-handling.md) |
 | Third-party library recommendations | [references/core/libraries.md](references/core/libraries.md) |
-| Naming conventions (`snake_case` / `PascalCase`) & style rules | [references/standards/naming.md](references/standards/naming.md), [references/standards/formatting.md](references/standards/formatting.md) |
-| Ownership, RAII & deterministic memory management | [references/performance/memory.md](references/performance/memory.md) |
-| Custom allocators, `pmr` & cache layout | [references/performance/allocators.md](references/performance/allocators.md) |
+| Naming conventions (`snake_case` / `PascalCase`) & style rules | [references/standards/naming.md](references/standards/naming.md) |
+| Ownership, RAII, deterministic memory, containers, allocators & optimization | [references/performance/memory.md](references/performance/memory.md), [references/performance/container.md](references/performance/container.md), [references/performance/optimization.md](references/performance/optimization.md) |
 | Concurrency, atomics, synchronization & real-time constraints | [references/performance/concurrency.md](references/performance/concurrency.md) |
-| SIMD vectorization & hardware acceleration | [references/hardware/simd.md](references/hardware/simd.md) |
-| Cache locality & data-oriented layout | [references/hardware/cache.md](references/hardware/cache.md) |
-| CMake targets, build configuration & presets | [references/build/cmake.md](references/build/cmake.md), [references/build/presets.md](references/build/presets.md) |
-| Unit tests, sanitizers, static analysis, profiling & diagnostics | [references/quality/testing.md](references/quality/testing.md), [references/quality/diagnostics.md](references/quality/diagnostics.md) |
+| Hardware acceleration & compute layout | [references/hardware/compute.md](references/hardware/compute.md) |
+| CMake targets, build configuration & optimization flags | [references/build/cmake.md](references/build/cmake.md), [references/build/BuildOptimization.cmake](references/build/BuildOptimization.cmake) |
+| Public API docs, comments & documentation standards | [references/quality/documentation.md](references/quality/documentation.md) |
+| Unit tests, sanitizers, static analysis, CI/CD & diagnostics | [references/tests-diagnostics/testing-and-quality-assurance.md](references/tests-diagnostics/testing-and-quality-assurance.md), [references/tests-diagnostics/diagnostics-and-sanitizers.md](references/tests-diagnostics/diagnostics-and-sanitizers.md), [references/tests-diagnostics/ci-cd.md](references/tests-diagnostics/ci-cd.md), [references/tests-diagnostics/.clang-format](references/tests-diagnostics/.clang-format), [references/tests-diagnostics/.clang-tidy](references/tests-diagnostics/.clang-tidy) |
 
 ## Dead Code Removal
 

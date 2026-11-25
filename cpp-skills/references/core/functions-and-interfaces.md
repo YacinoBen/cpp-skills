@@ -44,6 +44,7 @@ Guidelines for designing clean, type-safe, and zero-overhead C++ functions, publ
 
 ### Syntax & Capture Modes
 ```cpp
-[capture_clause](parameters) specifiers -> return_type {
+[capture_clause](`parameters`) specifiers -> return_type {
     // Function body
 };
+```
