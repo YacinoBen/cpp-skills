@@ -63,3 +63,12 @@ Consult this index and the relevant files in `references/` before writing, refac
 - State the active or target C++ standard and the `references/` files applied.
 - Keep the implementation minimal and focused on the requirement without unrequested features or filler comments.
 - Confirm tests, sanitizers/linting where applicable, and any performance evidence (benchmarks, counters, or disassembly compared against a baseline) before concluding.
+
+## Conceptual Sources & Grounding
+
+When making design, safety, performance, or compiler-flag trade-offs not explicitly detailed in a loaded reference file, ground decisions in the repository's reference sources:
+
+- **C++ Core Guidelines** & **GotW / Elements of Modern C++ Style** (safety, ownership, value semantics, idiomatic C++)
+- **C++ Best Practices** & **OpenSSF Compiler Options Hardening Guide** (defensive practices, warnings, hardening flags)
+- **C++ High Performance (2nd ed.)** (memory hierarchy, layout, allocators, cost trade-offs)
+- **cppreference** (exact ISO standard semantics and library guarantees)
