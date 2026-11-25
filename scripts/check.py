@@ -33,7 +33,35 @@ def check_repo(root: pathlib.Path) -> list[str]:
                 f"{skill_file}: 'name' ({name_match.group(1)}) does not match parent directory ({skill_file.parent.name})."
             )
 
-    # 2. Verify relative Markdown links (ignoring fenced and inline code)
+    # 2. Verify OpenCode command definition and install script
+    opencode_cmd = root / ".opencode" / "command" / "cpp-skills.md"
+    if not opencode_cmd.exists():
+        errors.append("Missing OpenCode command file: .opencode/command/cpp-skills.md")
+    else:
+        cmd_text = opencode_cmd.read_text(encoding="utf-8")
+        cmd_match = re.match(r"^---\s*\n(.*?)\n---\s*\n(.*)", cmd_text, re.DOTALL)
+        if not cmd_match:
+            errors.append(f"{opencode_cmd}: missing or malformed YAML frontmatter.")
+        else:
+            cmd_fm, cmd_body = cmd_match.group(1), cmd_match.group(2)
+            if not re.search(r"^description:\s*.+$", cmd_fm, re.MULTILINE):
+                errors.append(f"{opencode_cmd}: missing 'description' in frontmatter.")
+            if not re.search(r"^argument-hint:\s*.+$", cmd_fm, re.MULTILINE):
+                errors.append(f"{opencode_cmd}: missing 'argument-hint' in frontmatter.")
+            if "$ARGUMENTS" not in cmd_body:
+                errors.append(f"{opencode_cmd}: missing '$ARGUMENTS' placeholder in command prompt.")
+
+    install_script = root / "scripts" / "install-opencode.sh"
+    if not install_script.exists():
+        errors.append("Missing OpenCode install script: scripts/install-opencode.sh")
+    else:
+        script_text = install_script.read_text(encoding="utf-8")
+        if not script_text.startswith("#!/usr/bin/env bash"):
+            errors.append(f"{install_script}: missing '#!/usr/bin/env bash' shebang.")
+        if "cpp-skills" not in script_text or ".opencode/command/cpp-skills.md" not in script_text:
+            errors.append(f"{install_script}: missing expected symlink targets for cpp-skills.")
+
+    # 3. Verify relative Markdown links (ignoring fenced and inline code)
     link_pattern = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
     for md_file in root.rglob("*.md"):
         if ".git" in md_file.parts:
@@ -50,7 +78,7 @@ def check_repo(root: pathlib.Path) -> list[str]:
             if not resolved.exists():
                 errors.append(f"{md_file}: broken link -> {target}")
 
-    # 3. Verify kebab-case naming inside cpp-skills/ (and skills/ if present)
+    # 4. Verify kebab-case naming inside cpp-skills/ (and skills/ if present)
     kebab_re = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*(\.(md|ya?ml))?$")
     allowed_exact = {"SKILL.md", ".clang-tidy", ".clang-format", "BuildOptimization.cmake"}
 
@@ -67,7 +95,7 @@ def check_repo(root: pathlib.Path) -> list[str]:
                 if not kebab_re.match(p.name):
                     errors.append(f"Non-kebab-case name: {p}")
 
-    # 4. Verify JSON manifests (.claude-plugin/plugin.json, .codex-plugin/plugin.json,
+    # 5. Verify JSON manifests (.claude-plugin/plugin.json, .codex-plugin/plugin.json,
     #    marketplace.json files, gemini-extension.json, and .claude/settings.json)
     loaded_manifests: dict[str, dict] = {}
 
