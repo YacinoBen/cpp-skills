@@ -30,12 +30,12 @@ python scripts/check.py
 
 The guidelines and conventions in `cpp-skills` draw conceptual inspiration from established C++ references and engineering guides:
 
-- [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines) — core design, safety, resource management, and modern C++ rules.
-- Herb Sutter's [Elements of Modern C++ Style](https://herbsutter.com/elements-of-modern-c-style/) and [GotW (Guru of the Week)](https://herbsutter.com/gotw/) — idiomatic style, lifetime clarity, and subtle language edge cases.
-- Jason Turner's [C++ Best Practices](https://github.com/cpp-best-practices/cppbestpractices) — practical habits, tooling discipline, and defensive coding.
-- Björn Andrist and Viktor Sehr's [C++ High Performance, 2nd edition](https://www.oreilly.com/library/view/c-high-performance/9781839216541/) — data layout, memory hierarchy, allocators, and performance engineering.
-- OpenSSF [Compiler Options Hardening Guide](https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html) — compiler security flags and hardening practices.
-- [cppreference](https://en.cppreference.com/) — ISO C++ standard specifications, library behavior, and feature details.
+- [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines): core design, safety, resource management, and modern C++ rules.
+- Herb Sutter's [Elements of Modern C++ Style](https://herbsutter.com/elements-of-modern-c-style/) and [GotW (Guru of the Week)](https://herbsutter.com/gotw/): idiomatic style, lifetime clarity, and subtle language edge cases.
+- Jason Turner's [C++ Best Practices](https://github.com/cpp-best-practices/cppbestpractices): practical habits, tooling discipline, and defensive coding.
+- Björn Andrist and Viktor Sehr's [C++ High Performance, 2nd edition](https://www.oreilly.com/library/view/c-high-performance/9781839216541/): data layout, memory hierarchy, allocators, and performance engineering.
+- OpenSSF [Compiler Options Hardening Guide](https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html): compiler security flags and hardening practices.
+- [cppreference](https://en.cppreference.com/): ISO C++ standard specifications, library behavior, and feature details.
 
 ## Attribution & License
 
