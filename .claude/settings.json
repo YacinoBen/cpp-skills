@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "yacinoben-cpp-skills": {
+      "source": {
+        "source": "github",
+        "repo": "YacinoBen/cpp-skills"
+      }
+    }
+  }
+}

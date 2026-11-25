@@ -1,6 +1,6 @@
 # C++ Skills Repository (`cpp-skills`)
 
-Modular modern C++ (C++11–C++23) reference guidelines and coding standards for AI coding assistants (Claude Code, Codex, Gemini CLI, Cursor, and Copilot). Designed for deterministic memory management, zero-cost abstractions, MISRA C++:2023 alignment, and consistent API documentation.
+Modular modern C++ (C++11 to C++23) reference guidelines and coding standards for AI coding assistants (Claude Code, Codex, Gemini CLI, Cursor, and Copilot). Designed for deterministic memory management, zero-cost abstractions, MISRA C++:2023 alignment, and consistent API documentation.
 
 ## Repository Structure
 
@@ -10,24 +10,31 @@ Modular modern C++ (C++11–C++23) reference guidelines and coding standards for
 
 ## Installation
 
-Only the `cpp-skills/` directory is needed in a target repository or agent skill path.
+### Claude Code Plugin & Marketplace (Recommended)
 
-### 1. Copy or Clone into Your Workspace
-Place `cpp-skills/` in your project root or under your assistant's skills directory (for example, `.claude/skills/cpp-skills`).
-
-### 2. Wire Your Assistant Configuration
-Point `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or system instructions to `SKILL.md`:
-
-```markdown
-Read and apply `cpp-skills/SKILL.md` and the relevant files in `cpp-skills/references/` before writing, refactoring, or reviewing C++ code.
-```
-
-### 3. Claude Code Marketplace
-Add the repository and install the plugin directly from Claude Code:
+Add the repository as a marketplace and install the plugin in Claude Code:
 
 ```bash
 /plugin marketplace add YacinoBen/cpp-skills
 /plugin install cpp-skills@yacinoben-cpp-skills
+/reload-plugins
+```
+
+To install for a specific scope (`user` by default, `project`, or `local`):
+
+```bash
+claude plugin install cpp-skills@yacinoben-cpp-skills --scope project
+```
+
+### Manual / Local Copy
+
+Only the `cpp-skills/` directory is needed in a target repository or agent skill path.
+
+1. Place `cpp-skills/` in your project root or under your assistant's skills directory (for example, `.claude/skills/cpp-skills`).
+2. Point `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or system instructions to `SKILL.md`:
+
+```markdown
+Read and apply `cpp-skills/SKILL.md` and the relevant files in `cpp-skills/references/` before writing, refactoring, or reviewing C++ code.
 ```
 
 ## Usage Examples
@@ -54,7 +61,7 @@ The guidelines and conventions in `cpp-skills` draw conceptual inspiration from 
 - Björn Andrist and Viktor Sehr's [C++ High Performance, 2nd edition](https://www.oreilly.com/library/view/c-high-performance/9781839216541/) — data layout, memory hierarchy, allocators, and performance engineering.
 - OpenSSF [Compiler Options Hardening Guide](https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html) — compiler security flags and hardening practices.
 - [cppreference](https://en.cppreference.com/) — ISO C++ standard specifications, library behavior, and feature details.
-- 
+
 ## Attribution & License
 
 Inspired by the modular skill-routing architecture of [`DiamonDinoia/skill-cpp`](https://github.com/DiamonDinoia/skill-cpp) (`skills/cpp`), adapted to the `cpp-skills` directory layout and workflow. Language feature lists and standard summaries are adapted from [cppreference.com](https://en.cppreference.com/) under **CC BY-SA**. Repository structure, reference guides, scripts, and examples follow the terms in `LICENSE`.
