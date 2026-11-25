@@ -46,4 +46,4 @@ python scripts/check.py
 
 ## Attribution & License
 
-Language feature lists and standard summaries are adapted from [cppreference.com](https://en.cppreference.com/) under **CC BY-SA**. Repository structure, reference guides, scripts, and examples follow the terms in `LICENSE`.
+Inspired by the modular skill-routing architecture of [`DiamonDinoia/skill-cpp`](https://github.com/DiamonDinoia/skill-cpp) (`skills/cpp`), adapted to the `cpp-skills` directory layout and workflow. Language feature lists and standard summaries are adapted from [cppreference.com](https://en.cppreference.com/) under **CC BY-SA**. Repository structure, reference guides, scripts, and examples follow the terms in `LICENSE`.
