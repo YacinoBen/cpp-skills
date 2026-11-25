@@ -26,6 +26,7 @@ Consult this index and the relevant files in `references/` before writing, refac
 | Function signatures, parameters, returns, overloads, ADL, operators, lambdas & API design | [references/core/functions-and-interfaces.md](references/core/functions-and-interfaces.md) |
 | Containers, bounds/lifetime safety & memory rules | [references/core/containers.md](references/core/containers.md) |
 | Standard algorithms, ranges & execution policies | [references/core/algorithms.md](references/core/algorithms.md) |
+| Deferred evaluation, views, proxy objects & generators/coroutines | [references/core/deferred-computation.md](references/core/deferred-computation.md) |
 | Templates, concepts & compile-time metaprogramming | [references/core/templates.md](references/core/templates.md) |
 | Standard library utilities (`span`, `optional`, `expected`, etc.) | [references/core/utilities.md](references/core/utilities.md) |
 | Streams, formatting & I/O handling | [references/core/stream.md](references/core/stream.md) |
