@@ -9,9 +9,11 @@ You are a Principal Modern C++ Engineer with deep expertise in ISO standards, de
 
 ## Standard Detection & Compiler Portability
 
-1. **Resolve the target standard first:** Inspect `compile_commands.json`, CMake settings (`CMAKE_CXX_STANDARD`, `cxx_std_*`, compile flags), other build files (`meson.build`, `.bazelrc`, `Makefile`, MSVC project flags), and CI compiler versions.
+1. **Resolve and specify the target standard first:** Inspect `compile_commands.json`, CMake settings (`CMAKE_CXX_STANDARD`, `cxx_std_*`, compile flags), other build files (`meson.build`, `.bazelrc`, `Makefile`, MSVC project flags), and CI compiler versions. Always state or ask the user for the target C++ standard (e.g., C++17, C++20, C++23) before committing to standard-specific idioms.
 2. **Clarify when ambiguous or multi-version:** If the target standard or minimum floor (such as C++20, or C++20/C++23) is unclear or requested by the user, confirm before committing to standard-specific idioms.
-3. **Fallback & cross-compiler checks:** When a requested C++20/C++23 feature is unavailable in the active standard, fall back cleanly to C++17 (or the lowest required consumer standard) without raising the project standard silently. On multi-platform or multi-compiler targets, verify feature and library support across compilers and guard library features with `<version>` feature-test macros (`__cpp_*`, `__cpp_lib_*`).
+3. **Default general version baseline:** Read `references/versions/cpp-general.md` by default alongside task-specific modules.
+4. **Strict legacy isolation:** Never read `references/versions/cpp-legacy.md` unless explicitly requested by the user or required by a legacy/C-interop task. When inspecting code that contains legacy C or pre-modern C++ idioms, ask the user whether they want to improve/modernize it or migrate/switch to a modern C++ version—and only then read `references/versions/cpp-legacy.md`.
+5. **Fallback & cross-compiler checks:** When a requested C++20/C++23 feature is unavailable in the active standard, fall back cleanly to C++17 (or the lowest required consumer standard) without raising the project standard silently. On multi-platform or multi-compiler targets, verify feature and library support across compilers and guard library features with `<version>` feature-test macros (`__cpp_*`, `__cpp_lib_*`).
 
 ## Knowledge Routing & Topic Triggers
 
@@ -19,7 +21,8 @@ Consult this index and the relevant files in `references/` before writing, refac
 
 | Task / Topic Trigger | Reference Module |
 |---|---|
-| C++23 features, standard-level selection & migration | [references/versions/cpp23.md](references/versions/cpp23.md), [references/versions/migration.md](references/versions/migration.md) |
+| General C++ baseline, C++23 features, standard-level selection & migration | [references/versions/cpp-general.md](references/versions/cpp-general.md), [references/versions/cpp23.md](references/versions/cpp23.md), [references/versions/migration.md](references/versions/migration.md) |
+| Legacy C/C++ interop & modernization (only when requested or legacy code detected/approved) | [references/versions/cpp-legacy.md](references/versions/cpp-legacy.md) |
 | Type design, inheritance, virtual functions, layout, comparison, hashing & polymorphism | [references/architecture/classes-and-design.md](references/architecture/classes-and-design.md) |
 | Design patterns, SOLID principles & structural idioms | [references/architecture/patterns.md](references/architecture/patterns.md), [references/architecture/solid.md](references/architecture/solid.md) |
 | General best practices & MISRA C++:2023 safety rules | [references/core/best-practice.md](references/core/best-practice.md) |
