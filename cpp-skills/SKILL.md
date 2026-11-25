@@ -23,6 +23,7 @@ Consult this index and the relevant files in `references/` before writing, refac
 | Type design, inheritance, virtual functions, layout, comparison, hashing & polymorphism | [references/architecture/classes-and-design.md](references/architecture/classes-and-design.md) |
 | Design patterns, SOLID principles & structural idioms | [references/architecture/patterns.md](references/architecture/patterns.md), [references/architecture/solid.md](references/architecture/solid.md) |
 | General best practices & MISRA C++:2023 safety rules | [references/core/best-practice.md](references/core/best-practice.md) |
+| Function signatures, parameters, returns, overloads, ADL, operators, lambdas & API design | [references/core/functions-and-interfaces.md](references/core/functions-and-interfaces.md) |
 | Containers, bounds/lifetime safety & memory rules | [references/core/containers.md](references/core/containers.md) |
 | Standard algorithms, ranges & execution policies | [references/core/algorithms.md](references/core/algorithms.md) |
 | Templates, concepts & compile-time metaprogramming | [references/core/templates.md](references/core/templates.md) |
