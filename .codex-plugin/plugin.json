@@ -27,7 +27,7 @@
     "googletest",
     "skills"
   ],
-  "skills": "./cpp-skills/",
+  "skills": "./",
   "interface": {
     "displayName": "CPP Skills",
     "shortDescription": "Modern C++ (C++11 to C++23) guidelines, MISRA C++:2023, Clang-Tidy & GoogleTest",
