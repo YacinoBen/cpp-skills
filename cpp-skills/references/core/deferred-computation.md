@@ -22,7 +22,7 @@ Evaluate work at the point of use rather than at the point of expression when in
   - Avoid expensive intermediate operations when a cheaper equivalent answers the query—for example, comparing squared norms before computing square roots.
   - Defer string assembly behind a lightweight proxy that answers `size()` or comparisons and writes once into the final buffer.
   - Use expression templates only when profiling proves temporary vectors/matrices are a bottleneck and a single fused pass on assignment is warranted; they add template complexity, slower builds, and noisier diagnostics compared to a straightforward fused loop.
-- **Lifetime & Ergonomics Rules**: Design proxies to be converted or consumed immediately rather than stored via `auto x = a + b;` with dangling operand references. Provide transparent conversion to the target type where appropriate, constrain or document usage to discourage unsafe storage, and verify behavior with benchmarks.
+- **Lifetime & Ergonomics Rules**: Design proxies to be converted or consumed immediately rather than stored via `auto x { a + b };` with dangling operand references. Provide transparent conversion to the target type where appropriate, constrain or document usage to discourage unsafe storage, and verify behavior with benchmarks.
 
 ## Generators & Coroutines
 - **Lazy Sequence Producers**: Use generator coroutines (`std::generator` in C++23, or a project generator type) when state is natural to express sequentially—such as parsers, tree traversals, or record streams—without hand-writing iterator state machines.
