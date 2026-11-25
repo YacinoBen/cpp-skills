@@ -5,37 +5,12 @@ Modular modern C++ (C++11 to C++23) reference guidelines and coding standards fo
 ## Repository Structure
 
 - `SKILL.md`: Primary entry point containing behavioral rules, documentation standards, and domain routing to `references/`.
-- `references/`: Modular reference sheets organized by domain (`versions/`, `architecture/`, `core/`, `standards/`, `performance/`, `hardware/`, `build/`, and `quality/`).
+- `references/`: Modular reference sheets organized by domain (`versions/`, `architecture/`, `core/`, `standards/`, `performance/`, `hardware/`, `build/`, and `tests-diagnostics/`).
 - `scripts/check.py`: Validation script checking repository structure, links, and reference consistency.
 
 ## Installation
 
-### Claude Code Plugin & Marketplace (Recommended)
-
-Add the repository as a marketplace and install the plugin in Claude Code:
-
-```bash
-/plugin marketplace add YacinoBen/cpp-skills
-/plugin install cpp-skills@yacinoben-cpp-skills
-/reload-plugins
-```
-
-To install for a specific scope (`user` by default, `project`, or `local`):
-
-```bash
-claude plugin install cpp-skills@yacinoben-cpp-skills --scope project
-```
-
-### Manual / Local Copy
-
-Only the `cpp-skills/` directory is needed in a target repository or agent skill path.
-
-1. Place `cpp-skills/` in your project root or under your assistant's skills directory (for example, `.claude/skills/cpp-skills`).
-2. Point `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or system instructions to `SKILL.md`:
-
-```markdown
-Read and apply `cpp-skills/SKILL.md` and the relevant files in `cpp-skills/references/` before writing, refactoring, or reviewing C++ code.
-```
+See `./INSTALL.md` for manual copy instructions (`cpp-skills/` only), Claude Code, Codex, Gemini CLI setup, and repository validation steps.
 
 ## Usage Examples
 
