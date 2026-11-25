@@ -36,12 +36,16 @@ This document defines the preferred modern third-party libraries and ecosystem s
   - **Use Case:** Functional error handling without exception overhead in hot paths.
   - **Guideline:** Prefer returning `std::expected<T, E>` over throwing exceptions for recoverable or expected operational errors.
 
-## 5. Data Formats & Serialization
+## 5. Data Formats, Serialization & RPC
 - **`nlohmann/json`**
   - **Use Case:** JSON parsing and serialization with an intuitive, STL-like API.
   - **Docs:** https://json.nlohmann.me/api/basic_json/
+- **`gRPC` (C++)**
+  - **Use Case:** High-performance RPC framework using Protocol Buffers and HTTP/2 for service-to-service communication.
+  - **Guideline:** Prefer generated stubs (`grpc::Server` / async or callback APIs) and explicit deadlines/cancellation tokens over ad-hoc sockets.
+  - **Docs:** https://github.com/grpc/grpc/tree/master/src/cpp
 
-## 6. Image Processing, Pipelines & Computer Vision
+## 6. Image Processing, Pipelines, Computer Vision & Medical Imaging
 - **`Halide`**
   - **Use Case:** High-performance image processing and array computation pipelines separating algorithm from execution schedule (SIMD/GPU/multithreading).
   - **Docs:** https://halide-lang.org/docs/
@@ -51,6 +55,18 @@ This document defines the preferred modern third-party libraries and ecosystem s
 - **`OpenCV`**
   - **Use Case:** Real-time computer vision, matrix operations (`cv::Mat`), and classical image algorithms.
   - **Docs:** https://docs.opencv.org/
+- **`DCMTK`**
+  - **Use Case:** DICOM medical imaging files, datasets, and network/protocol handling in C++.
+  - **Guideline:** Isolate raw DCMTK headers/types behind clean RAII wrappers or domain adapters in application code.
+  - **Docs:** https://github.com/DCMTK/dcmtk
+- **`GDCM` (Grassroots DICOM)**
+  - **Use Case:** DICOM parsing, transfer syntax decoding/encoding, and medical imaging interoperability in C++.
+  - **Guideline:** Check status/return codes explicitly and wrap reader/writer lifetimes in RAII adapters.
+  - **Docs:** https://github.com/malaterre/GDCM
+- **`VTK` (Visualization Toolkit)**
+  - **Use Case:** 3D medical volume/surface rendering, mesh processing, and clinical visualization pipelines.
+  - **Guideline:** Manage `vtkSmartPointer` explicitly and avoid raw `New()`/`Delete()` leaks in pipeline code.
+  - **Docs:** https://github.com/kitware/vtk
 
 ## 7. Unit Testing & Benchmarking
 - **`Catch2` (v3)**
