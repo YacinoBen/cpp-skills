@@ -1,23 +1,31 @@
 {
   "name": "cpp-skills",
-  "description": "Production-grade Modern C++ guidelines (C++11/14/17/20/23): universal brace initialization, MISRA C++:2023 safety rules, Clang-Tidy enforcement, and GoogleTest.",
   "version": "1.0.0",
+  "description": "Production-grade Modern C++ (C++11 to C++23) reference guidelines and coding standards covering universal brace initialization, MISRA C++:2023 safety rules, Clang-Tidy enforcement, and GoogleTest.",
   "author": {
     "name": "Yacine Benaffane",
     "url": "https://github.com/YacinoBen"
   },
   "license": "Custom MIT-based (No standalone/marketplace commercialization)",
   "homepage": "https://github.com/YacinoBen/cpp-skills",
-  "repository": "https://github.com/YacinoBen/cpp-skills",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YacinoBen/cpp-skills.git"
+  },
   "skills": "./cpp-skills",
   "keywords": [
-    "skills",
     "cpp",
     "c++",
     "modern-cpp",
+    "cpp11",
+    "cpp14",
+    "cpp17",
+    "cpp20",
+    "cpp23",
     "misra",
     "clang-tidy",
     "core-guidelines",
-    "googletest"
+    "googletest",
+    "skills"
   ]
 }
