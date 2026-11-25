@@ -1,4 +1,4 @@
-# Installation Guide — `cpp-skills`
+# Installation Guide
 
 This guide covers installing and enabling **C++ Skills (`cpp-skills`)** guidelines across supported AI assistants (**Claude Code**, **Codex**, and **Gemini CLI**), starting with a standalone **Manual Copy** step that uses only the `cpp-skills/` directory.
 
