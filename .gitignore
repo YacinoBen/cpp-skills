@@ -56,6 +56,7 @@ compile_commands.json
 *.log
 *.bak
 *.swp
+*.swo
 
 # vcpkg
 vcpkg_installed/
@@ -66,3 +67,6 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+__pycache__/
+*.pyc
