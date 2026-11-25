@@ -2,6 +2,11 @@
 
 Modular modern C++ (C++11 to C++23) reference guidelines and coding standards for AI coding assistants (Claude Code, Codex, Gemini CLI, Cursor, and Copilot). Designed for deterministic memory management, zero-cost abstractions, MISRA C++:2023 alignment, and consistent API documentation.
 
+- **Enforced Style & Static Analysis:** Loads and applies real `.clang-format` (Allman braces) and `.clang-tidy` configurations alongside `best-practices.md` instead of vague style checklists.
+- **Explicit Standard Boundaries:** Separates C++11 through C++23 idioms, verifies target standards before committing to features, and falls back cleanly without silently raising project requirements.
+- **Modular Context Routing:** Loads only the relevant domain modules (`container.md`, `memory.md`, `algorithms.md`, etc.) to keep context focused and high-signal..
+
+
 ## Repository Structure
 
 - `SKILL.md`: Primary entry point containing behavioral rules, documentation standards, and domain routing to `references/`.
