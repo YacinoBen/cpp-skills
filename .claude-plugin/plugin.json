@@ -1,7 +1,7 @@
 {
   "name": "cpp-skills",
   "version": "1.0.0",
-  "description": "Modern C++ (C++11 to C++23) reference guidelines and coding standards covering universal brace initialization, MISRA C++:2023 safety rules, Clang-Tidy enforcement, and GoogleTest.",
+  "description": "Production-grade Modern C++ (C++11 to C++23) reference guidelines and coding standards covering universal brace initialization, MISRA C++:2023 safety rules, Clang-Tidy enforcement, and GoogleTest.",
   "author": {
     "name": "Yacine Benaffane",
     "url": "https://github.com/YacinoBen"
