@@ -6,13 +6,9 @@
     "name": "Yacine Benaffane",
     "url": "https://github.com/YacinoBen"
   },
-  "license": "Custom MIT-based (No standalone/marketplace commercialization)",
+  "license": "MIT",
   "homepage": "https://github.com/YacinoBen/cpp-skills",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/YacinoBen/cpp-skills.git"
-  },
-  "skills": "../cpp-skills",
+  "repository": "https://github.com/YacinoBen/cpp-skills",
   "keywords": [
     "cpp",
     "c++",
