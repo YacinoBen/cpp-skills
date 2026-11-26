@@ -8,11 +8,8 @@
   },
   "license": "Custom MIT-based (No standalone/marketplace commercialization)",
   "homepage": "https://github.com/YacinoBen/cpp-skills",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/YacinoBen/cpp-skills.git"
-  },
-  "skills": "../cpp-skills",
+  "repository": "https://github.com/YacinoBen/cpp-skills.git",
+  "skills": "./",
   "keywords": [
     "cpp",
     "c++",
